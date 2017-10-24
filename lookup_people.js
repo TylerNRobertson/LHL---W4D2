@@ -27,8 +27,12 @@ function searchPeople() {
       console.log('Searching.....')
       console.log(`Found ${result.rows.length} results in database`)
       for (let people of result.rows) {
-        console.log(`- ${people.id}: ${people.first_name} ${people.last_name}, born: ${people.birthdate.getFullYear()}-${people.birthdate.getMonth()+1}-${people.birthdate.getDate()}`)
+        printPeople(people);
       }
       client.end();
     });
+}
+
+function printPeople(people) {
+  console.log(`- ${people.id}: ${people.first_name} ${people.last_name}, born: ${people.birthdate.getFullYear()}-${people.birthdate.getMonth()+1}-${people.birthdate.getDate()}`)
 }

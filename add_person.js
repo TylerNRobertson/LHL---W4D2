@@ -1,16 +1,6 @@
-let knex = require('knex')
-const pg = require('pg')
-const settings = require('./settings')
-
-knex = require('knex')({
-  client: 'pg',
-  connection: {
-    host : settings.hostname,
-    user : settings.user,
-    password : settings.password,
-    database : settings.database
-  }
-});
+const ENV         = process.env.ENV || "development";
+const knexConfig  = require("./knexfile");
+const knex        = require("knex")(knexConfig[ENV]);
 
 const [firstName, lastName, birthDate] = process.argv.slice(2)
 
